@@ -54,7 +54,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Kontrolleri">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -171,7 +171,7 @@
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="MaksuplusText" layoutX="126.0" layoutY="303.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" text="+">
+                        <Button onAction="#buttonPlusMaksu" fx:id="MaksuplusText" layoutX="126.0" layoutY="303.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" text="+">
                            <font>
                               <Font size="11.0" />
                            </font>

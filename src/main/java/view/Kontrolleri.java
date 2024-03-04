@@ -228,7 +228,8 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     private ISimulaattorinUI ui;
 
     private IKontrolleriForV kontrolleri;
-
+    
+    int kassa = 0;
     @Override
     public void kaynnistaSimulointi() {
 
@@ -254,6 +255,23 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
 
     }
 
+    @FXML
+    public synchronized void buttonPlusMaksu() {
+        kassa++;
+        switch (kassa) {
+            case 1:
+                vuoronumeroText.setVisible(false);
+                System.out.println("Maksu minus button pressed" + kassa);
+                kassa = 1;
+                break;
+        }
 
-}
+        MaksuplusText.setOnAction(e -> {
+            if (kassa > 0) {
+                kassa--;
+            }
+        });
+    }
+
+    }
 
