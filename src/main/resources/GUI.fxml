@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <SplitPane dividerPositions="0.25" focusTraversable="true" prefHeight="561.0" prefWidth="900.0" VBox.vgrow="ALWAYS">
+      <items>
+        <ScrollPane prefHeight="406.0" prefWidth="0.0">
+          <content>
+            <AnchorPane id="Content" fx:id="firstcolumText" minHeight="-1.0" minWidth="-1.0" prefHeight="410.0" prefWidth="209.0">
+              <children>
+                        <Text layoutX="21.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text layoutX="21.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Label fx:id="ControlText" alignment="CENTER" layoutX="62.0" layoutY="18.0" style="&#10;" text="CONTROL" textAlignment="CENTER" wrapText="false">
+                           <font>
+                              <Font size="18.0" fx:id="x11" />
+                           </font>
+                           <textFill>
+                              <Color red="0.624" green="0.624" blue="0.624" fx:id="x21" />
+                           </textFill>
+                        </Label>
+                        <Separator layoutX="18.0" layoutY="43.0" prefWidth="200.0" />
+                        <Text fx:id="aikaText" layoutX="22.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Syötä aika:" />
+                        <Text fx:id="syötäText" layoutX="22.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Syötä viive:" />
+                        <ButtonBar layoutX="17.0" layoutY="123.0" prefHeight="35.0" prefWidth="70.0">
+                          <buttons>
+                            <Button fx:id="nopeutaText" mnemonicParsing="false" text="Nopeuta" />
+                          </buttons>
+                        </ButtonBar>
+                        <ButtonBar layoutX="114.0" layoutY="118.0" prefHeight="40.0" prefWidth="76.0">
+                          <buttons>
+                            <Button fx:id="hidastaText" contentDisplay="CENTER" minWidth="61.0" mnemonicParsing="false" prefHeight="12.0" text="Hidasta" textAlignment="RIGHT" />
+                          </buttons>
+                        </ButtonBar>
+                        <Separator layoutX="14.0" layoutY="192.0" prefWidth="200.0" />
+                        <Text fx:id="ServiceText" fill="#a19191" layoutX="58.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service Points">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="vuoronumerText" layoutX="31.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vuoronumero" />
+                        <Text fx:id="vastanottoText" layoutX="36.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="vastaanotto" />
+                        <Text layoutX="62.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fx:id="maksuText" layoutX="49.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maksu" />
+                        <Text fx:id="MriText" layoutX="57.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MRI" />
+                        <Text fx:id="LääkäriText" layoutX="46.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lääkäri" />
+                        <Text fx:id="guideText" fill="#ab9a9a" layoutX="83.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Guide">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="vuoronumeroplusText" layoutX="126.0" layoutY="210.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="15.0" text="+">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="vuoronmrominusText" layoutX="147.0" layoutY="210.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="21.0" text="-">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="vastanottoplusText" layoutX="126.0" layoutY="240.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="13.0" text="+">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="vastanottominusText" layoutX="147.0" layoutY="240.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="21.0" text="-">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="LääkäriplusText" layoutX="126.0" layoutY="272.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="18.0" text="+">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="LääkäriminusText" layoutX="147.0" layoutY="272.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="21.0" text="-">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="MaksuplusText" layoutX="126.0" layoutY="303.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" text="+">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="MaksuminusText" layoutX="147.0" layoutY="302.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="21.0" text="-">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="MriplusText" layoutX="126.0" layoutY="334.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="19.0" text="+">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="MriminusText" layoutX="147.0" layoutY="333.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="21.0" text="-">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="aikaboxText" layoutX="103.0" layoutY="49.0" prefHeight="25.0" prefWidth="100.0" />
+                        <TextField fx:id="syötöboxText" layoutX="103.0" layoutY="84.0" prefHeight="25.0" prefWidth="100.0" />
+              </children>
+            </AnchorPane>
+          </content>
+        </ScrollPane>
+        <AnchorPane maxHeight="-Infinity" prefHeight="416.0" prefWidth="692.0">
+          <children>
+            <Label fx:id="detailsText" alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" wrapText="false">
+                     <font>
+                <Font size="18.0" fx:id="x1" />
+                     </font>
+                     <textFill>
+                <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
+                     </textFill>
+                  </Label>
+                  <ImageView fx:id="fullimageText" fitHeight="377.0" fitWidth="652.0" layoutX="12.0" layoutY="20.0">
+                     <image>
+                        <Image url="@pictures/lattia.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="wall1Text" fitHeight="135.0" fitWidth="244.0" layoutX="20.0" layoutY="100.0">
+                     <image>
+                        <Image url="@pictures/wall%20window.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="wall2Text" fitHeight="138.0" fitWidth="246.0" layoutX="95.0" layoutY="56.0">
+                     <image>
+                        <Image url="@pictures/wall%20window.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="wall3Text" fitHeight="135.0" fitWidth="246.0" layoutX="171.0" layoutY="15.0">
+                     <image>
+                        <Image url="@pictures/wall%20window.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="wall4Text" fitHeight="122.0" fitWidth="236.0" layoutX="248.0" layoutY="-20.0">
+                     <image>
+                        <Image url="@pictures/wall%20window.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="bed1Text" fitHeight="90.0" fitWidth="165.0" layoutX="38.0" layoutY="169.0">
+                     <image>
+                        <Image url="@pictures/green%20floor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="sidewall1Text" fitHeight="90.0" fitWidth="171.0" layoutX="115.0" layoutY="123.0">
+                     <image>
+                        <Image url="@pictures/green%20floor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="sidewall2Text" fitHeight="92.0" fitWidth="163.0" layoutX="184.0" layoutY="86.0">
+                     <image>
+                        <Image url="@pictures/green%20floor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="idewall3Text" fitHeight="93.0" fitWidth="161.0" layoutX="266.0" layoutY="39.0">
+                     <image>
+                        <Image url="@pictures/green%20floor.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="docdeskText" fitHeight="71.0" fitWidth="135.0" layoutX="97.0" layoutY="142.0">
+                     <image>
+                        <Image url="@pictures/side%20wall.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="bed2Text" fitHeight="75.0" fitWidth="114.0" layoutX="179.0" layoutY="95.0">
+                     <image>
+                        <Image url="@pictures/side%20wall.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="bed3Text" fitHeight="81.0" fitWidth="129.0" layoutX="247.0" layoutY="48.0">
+                     <image>
+                        <Image url="@pictures/side%20wall.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="reception1Text" fitHeight="84.0" fitWidth="181.0" layoutX="101.0" layoutY="220.0">
+                     <image>
+                        <Image url="@pictures/Reception.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="reception2Text" fitHeight="92.0" fitWidth="170.0" layoutX="143.0" layoutY="232.0">
+                     <image>
+                        <Image url="@pictures/Reception.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="chair1Text" fitHeight="52.0" fitWidth="101.0" layoutX="263.0" layoutY="168.0">
+                     <image>
+                        <Image url="@pictures/chair%20left.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="chair2Text" fitHeight="50.0" fitWidth="113.0" layoutX="359.0" layoutY="109.0">
+                     <image>
+                        <Image url="@pictures/chair%20left.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="chair3Text" fitHeight="50.0" fitWidth="118.0" layoutX="413.0" layoutY="141.0">
+                     <image>
+                        <Image url="@pictures/chair%20left.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="vhair4Text" fitHeight="50.0" fitWidth="108.0" layoutX="389.0" layoutY="125.0">
+                     <image>
+                        <Image url="@pictures/chair%20left.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="chair5Text" fitHeight="55.0" fitWidth="100.0" layoutX="292.0" layoutY="182.0">
+                     <image>
+                        <Image url="@pictures/chair%20left.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="chair6Text" fitHeight="63.0" fitWidth="125.0" layoutX="308.0" layoutY="195.0">
+                     <image>
+                        <Image url="@pictures/chair%20left.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="chair7Text" fitHeight="74.0" fitWidth="99.0" layoutX="342.0" layoutY="123.0">
+                     <image>
+                        <Image url="@pictures/chair%20right.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="74.0" fitWidth="99.0" layoutX="365.0" layoutY="138.0">
+                     <image>
+                        <Image url="@pictures/chair%20right.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="chair8Text" fitHeight="74.0" fitWidth="99.0" layoutX="394.0" layoutY="156.0">
+                     <image>
+                        <Image url="@pictures/chair%20right.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="chair9Text" fitHeight="74.0" fitWidth="99.0" layoutX="237.0" layoutY="183.0">
+                     <image>
+                        <Image url="@pictures/chair%20right.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="chair10Text" fitHeight="74.0" fitWidth="99.0" layoutX="260.0" layoutY="198.0">
+                     <image>
+                        <Image url="@pictures/chair%20right.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="chair11Text" fitHeight="74.0" fitWidth="99.0" layoutX="290.0" layoutY="220.0">
+                     <image>
+                        <Image url="@pictures/chair%20right.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="mriaproText" fitHeight="75.0" fitWidth="147.0" layoutX="238.0" layoutY="80.0">
+                     <image>
+                        <Image url="@pictures/MRI.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="vuoronumeroText" fitHeight="71.0" fitWidth="129.0" layoutX="389.0" layoutY="210.0">
+                     <image>
+                        <Image url="@pictures/vuoronumero.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="bed22Text" fitHeight="75.0" fitWidth="135.0" layoutX="133.0" layoutY="105.0">
+                     <image>
+                        <Image url="@pictures/BED%20ROOM%202.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="doc11Text" fitHeight="99.0" fitWidth="200.0" layoutX="92.0" layoutY="145.0">
+                     <image>
+                        <Image url="@pictures/2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="bed11Text" fitHeight="99.0" fitWidth="200.0" layoutX="42.0" layoutY="171.0">
+                     <image>
+                        <Image url="@pictures/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="backwall1Text" fitHeight="183.0" fitWidth="320.0" layoutX="311.0" layoutY="-57.0">
+                     <image>
+                        <Image url="@pictures/8%20glass%20wall.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="backwall2Text" fitHeight="183.0" fitWidth="266.0" layoutX="378.0" layoutY="-24.0">
+                     <image>
+                        <Image url="@pictures/8%20glass%20wall.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="backwall4Text" fitHeight="159.0" fitWidth="222.0" layoutX="435.0" layoutY="18.0">
+                     <image>
+                        <Image url="@pictures/8%20glass%20wall.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="wallllText" fitHeight="99.0" fitWidth="200.0" layoutX="313.0" layoutY="33.0">
+                     <image>
+                        <Image url="@pictures/4.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="waterText" fitHeight="73.0" fitWidth="106.0" layoutX="399.0" layoutY="44.0">
+                     <image>
+                        <Image url="@pictures/5.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="sokeriText" fitHeight="99.0" fitWidth="192.0" layoutX="303.0" layoutY="18.0">
+                     <image>
+                        <Image url="@pictures/6.png" />
+                     </image>
+                  </ImageView>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+    <HBox id="HBox" alignment="CENTER_LEFT" prefHeight="280.0" prefWidth="900.0" spacing="5.0" VBox.vgrow="NEVER">
+      <children>
+        <Pane fx:id="paneText" nodeOrientation="LEFT_TO_RIGHT" prefHeight="199.0" prefWidth="894.0">
+               <children>
+                  <Text layoutX="35.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="80.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+      </children>
+      <padding>
+        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+      </padding>
+    </HBox>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+  </children>
+</VBox>
