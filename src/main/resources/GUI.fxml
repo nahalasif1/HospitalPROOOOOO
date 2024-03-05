@@ -131,7 +131,7 @@
                            </font>
                         </Text>
                         <Text fx:id="vuoronumerText" layoutX="31.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vuoronumero" />
-                        <Text fx:id="vastanottoText" layoutX="36.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="vastaanotto" />
+                        <Text fx:id="VastanottoText" layoutX="36.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vastaanotto" />
                         <Text layoutX="62.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                         <Text fx:id="maksuText" layoutX="49.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maksu" />
                         <Text fx:id="MriText" layoutX="57.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MRI" />
@@ -151,42 +151,42 @@
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="vastanottoplusText" layoutX="126.0" layoutY="240.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="13.0" text="+">
+                        <Button fx:id="vastaanottoplusButton" layoutX="126.0" layoutY="240.0" mnemonicParsing="false" onAction="#buttonPlusVastaanotto" prefHeight="8.0" prefWidth="13.0" text="+">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="vastanottominusText" layoutX="147.0" layoutY="240.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="21.0" text="-">
+                        <Button fx:id="vastaanottominusButton" layoutX="147.0" layoutY="240.0" mnemonicParsing="false" onAction="#buttonMinusVataanotto" prefHeight="22.0" prefWidth="21.0" text="-">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="LääkäriplusText" layoutX="126.0" layoutY="272.0" mnemonicParsing="false" prefHeight="14.0" prefWidth="18.0" text="+">
+                        <Button fx:id="LaakariplusButton" layoutX="126.0" layoutY="272.0" mnemonicParsing="false" onAction="#buttonPlusLaakari" prefHeight="14.0" prefWidth="18.0" text="+">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="LääkäriminusText" layoutX="147.0" layoutY="272.0" mnemonicParsing="false" prefHeight="15.0" prefWidth="21.0" text="-">
+                        <Button fx:id="LaakariminusButton" layoutX="147.0" layoutY="272.0" mnemonicParsing="false" onAction="#buttonMinusLaakari" prefHeight="15.0" prefWidth="21.0" text="-">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button onAction="#buttonPlusMaksu" fx:id="MaksuplusText" layoutX="126.0" layoutY="303.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="20.0" text="+">
+                        <Button fx:id="MaksuplusButton" layoutX="126.0" layoutY="303.0" mnemonicParsing="false" onAction="#buttonPlusMaksu" prefHeight="17.0" prefWidth="20.0" text="+">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="MaksuminusText" layoutX="147.0" layoutY="302.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="21.0" text="-">
+                        <Button fx:id="MaksuminusButton" layoutX="147.0" layoutY="302.0" mnemonicParsing="false" onAction="#buttonMinusMaksu" prefHeight="23.0" prefWidth="21.0" text="-">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="MriplusText" layoutX="126.0" layoutY="334.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="19.0" text="+">
+                        <Button fx:id="MRIplusButton" layoutX="126.0" layoutY="334.0" mnemonicParsing="false" onAction="#buttonPlusMri" prefHeight="11.0" prefWidth="19.0" text="+">
                            <font>
                               <Font size="11.0" />
                            </font>
                         </Button>
-                        <Button fx:id="MriminusText" layoutX="147.0" layoutY="333.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="21.0" text="-">
+                        <Button fx:id="MRIminusButton" layoutX="147.0" layoutY="333.0" mnemonicParsing="false" onAction="#buttonMinusMri" prefHeight="23.0" prefWidth="21.0" text="-">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -267,12 +267,12 @@
                         <Image url="@pictures/side%20wall.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="reception1Text" fitHeight="84.0" fitWidth="181.0" layoutX="101.0" layoutY="220.0">
+                  <ImageView fx:id="reception1Image" fitHeight="84.0" fitWidth="181.0" layoutX="101.0" layoutY="220.0">
                      <image>
                         <Image url="@pictures/Reception.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="reception2Text" fitHeight="92.0" fitWidth="170.0" layoutX="143.0" layoutY="232.0">
+                  <ImageView fx:id="reception2Image" fitHeight="92.0" fitWidth="170.0" layoutX="143.0" layoutY="232.0">
                      <image>
                         <Image url="@pictures/Reception.png" />
                      </image>
@@ -337,12 +337,12 @@
                         <Image url="@pictures/chair%20right.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="mriaproText" fitHeight="75.0" fitWidth="147.0" layoutX="238.0" layoutY="80.0">
+                  <ImageView fx:id="kuvaus1Image" fitHeight="75.0" fitWidth="161.0" layoutX="209.0" layoutY="81.0">
                      <image>
                         <Image url="@pictures/MRI.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="vuoronumeroText" fitHeight="71.0" fitWidth="129.0" layoutX="389.0" layoutY="210.0">
+                  <ImageView fx:id="VuoronumeroImage" fitHeight="71.0" fitWidth="129.0" layoutX="389.0" layoutY="210.0">
                      <image>
                         <Image url="@pictures/vuoronumero.png" />
                      </image>
@@ -352,7 +352,7 @@
                         <Image url="@pictures/BED%20ROOM%202.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="doc11Text" fitHeight="99.0" fitWidth="200.0" layoutX="92.0" layoutY="145.0">
+                  <ImageView fx:id="Laakari2Image" fitHeight="99.0" fitWidth="200.0" layoutX="93.0" layoutY="145.0">
                      <image>
                         <Image url="@pictures/2.png" />
                      </image>
@@ -377,19 +377,34 @@
                         <Image url="@pictures/8%20glass%20wall.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="wallllText" fitHeight="99.0" fitWidth="200.0" layoutX="313.0" layoutY="33.0">
-                     <image>
-                        <Image url="@pictures/4.png" />
-                     </image>
-                  </ImageView>
                   <ImageView fx:id="waterText" fitHeight="73.0" fitWidth="106.0" layoutX="399.0" layoutY="44.0">
                      <image>
                         <Image url="@pictures/5.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="sokeriText" fitHeight="99.0" fitWidth="192.0" layoutX="303.0" layoutY="18.0">
+                  <ImageView fx:id="KassaImage1" fitHeight="99.0" fitWidth="200.0" layoutX="394.0" layoutY="87.0">
                      <image>
-                        <Image url="@pictures/6.png" />
+                        <Image url="@pictures/kassa.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="KassaImage2" fitHeight="99.0" fitWidth="200.0" layoutX="431.0" layoutY="110.0">
+                     <image>
+                        <Image url="@pictures/kassa.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="Laakari1Image" fitHeight="75.0" fitWidth="147.0" layoutX="152.0" layoutY="124.0">
+                     <image>
+                        <Image url="@pictures/LääkäriSeisoo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="kuvaus2Image" fitHeight="75.0" fitWidth="161.0" layoutX="290.0" layoutY="37.0">
+                     <image>
+                        <Image url="@pictures/MRI.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="42.0" fitWidth="52.0" layoutX="267.0" layoutY="59.0">
+                     <image>
+                        <Image url="@pictures/käsimri.png" />
                      </image>
                   </ImageView>
           </children>
@@ -405,6 +420,21 @@
                         <Font size="80.0" />
                      </font>
                   </Text>
+                  <ImageView fitHeight="71.0" fitWidth="52.0" layoutX="213.0" layoutY="39.0">
+                     <image>
+                        <Image url="@pictures/jalkamri.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="99.0" fitWidth="200.0" layoutX="394.0" layoutY="25.0">
+                     <image>
+                        <Image url="@pictures/keuhkotmri.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="99.0" fitWidth="200.0" layoutX="546.0" layoutY="13.0">
+                     <image>
+                        <Image url="@pictures/aivotmri.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
       </children>
