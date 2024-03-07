@@ -272,6 +272,7 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     }
 
 
+
     public synchronized void buttonMinusMaksu() {
         MaksuminusButton.setOnAction(e -> {
             switch (kassa) {
