@@ -3,7 +3,11 @@ package view;
 
 import controller.IKontrolleriForM;
 import controller.IKontrolleriForV;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
 import simu.framework.IMoottori;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -271,7 +275,33 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
 
     }
 
+    @FXML
+    private void results(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI2.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Results");
+            stage.setScene(new javafx.scene.Scene(root1));
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    @FXML
+    private void resultss(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Results");
+            stage.setScene(new javafx.scene.Scene(root1));
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public synchronized void buttonMinusMaksu() {
         MaksuminusButton.setOnAction(e -> {

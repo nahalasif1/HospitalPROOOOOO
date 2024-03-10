@@ -60,18 +60,7 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
+            <MenuItem mnemonicParsing="false" text="Results" onAction="#results" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
@@ -216,7 +205,7 @@
                         <Image url="@pictures/reception%202.png" />
                      </image>
                   </ImageView>
-                  <ImageView fx:id="kuvaus1Image" fitHeight="75.0" fitWidth="156.0" layoutX="135.0" layoutY="71.0">
+                  <ImageView fx:id="kuvaus2Image" fitHeight="75.0" fitWidth="156.0" layoutX="135.0" layoutY="71.0">
                      <image>
                         <Image url="@pictures/Röntgenhoitaja2.png" />
                      </image>
@@ -236,7 +225,7 @@
                         <Image url="@pictures/kassa.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="90.0" fitWidth="178.0" layoutX="291.0" layoutY="37.0">
+                  <ImageView fx:id="kuvaus1Image" fitHeight="90.0" fitWidth="178.0" layoutX="291.0" layoutY="37.0">
                      <image>
                         <Image url="@pictures/Röntgenhoitaja.png" />
                      </image>

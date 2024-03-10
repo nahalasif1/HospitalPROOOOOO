@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Kontrolleri">
+
+    <children>
+        <MenuBar VBox.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Simulation" onAction="#resultss"/>
+
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Accordion layoutX="79.0" layoutY="67.0" />
+                <Pane prefHeight="380.0" prefWidth="224.0">
+                    <children>
+                        <Text layoutX="30.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Simulation Data" />
+                        <Text layoutX="30.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patients" />
+                        <Text layoutX="197.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                        <Text layoutX="30.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Text layoutX="197.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                        <Text layoutX="30.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                        <Text layoutX="197.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                        <Text layoutX="30.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total simulation time:" />
+                        <Text layoutX="30.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Average simulation time:" wrappingWidth="133.0" />
+                        <Text layoutX="197.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                        <Text layoutX="197.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="-" />
+                        <ChoiceBox layoutX="31.0" layoutY="49.0" prefHeight="25.0" prefWidth="133.0" />
+                        <Text layoutX="64.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulation 0" />
+                        <ScrollBar layoutY="359.0" prefHeight="15.0" prefWidth="224.0" />
+                    </children>
+                </Pane>
+                <Text layoutX="256.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Palvelupisteet" />
+                <Text layoutX="362.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quanity" />
+                <Text layoutX="445.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utilization" />
+                <Text layoutX="535.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Throughput" />
+                <Separator layoutX="221.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="374.0" prefWidth="6.0" />
+                <Text layoutX="268.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                <Text layoutX="268.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                <Text layoutX="268.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                <Text layoutX="459.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data" />
+                <Text layoutX="371.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                <Text layoutX="371.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                <Text layoutX="371.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="24.21630859375" />
+                <Text layoutX="547.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data" />
+                <Text layoutX="457.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data" />
+                <Text layoutX="547.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data" />
+                <Text layoutX="459.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data" />
+                <Text layoutX="547.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data" />
+                <Separator layoutX="227.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="374.0" prefWidth="6.0" />
+                <Separator layoutX="257.0" layoutY="65.0" prefHeight="15.0" prefWidth="348.0" />
+                <ScrollBar layoutX="229.0" layoutY="359.0" prefHeight="15.0" prefWidth="413.0" />
+            </children>
+        </AnchorPane>
+    </children>
+</VBox>
