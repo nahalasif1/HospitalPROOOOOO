@@ -60,7 +60,7 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem mnemonicParsing="false" text="Results" onAction="#results" />
+            <MenuItem mnemonicParsing="false" onAction="#results" text="Results" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">

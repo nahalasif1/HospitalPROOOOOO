@@ -12,18 +12,24 @@ public class Palvelupiste {
 	private final ContinuousGenerator generator;
 	private final Tapahtumalista tapahtumalista;
 	private final TapahtumanTyyppi skeduloitavanTapahtumanTyyppi;
+
+	private int x, y; // Palvelupisteen sijainti
 	
 	//JonoStartegia strategia; //optio: asiakkaiden järjestys
 	
 	private boolean varattu = false;
 
 
-	public Palvelupiste(ContinuousGenerator generator, Tapahtumalista tapahtumalista, TapahtumanTyyppi tyyppi){
+	public Palvelupiste(ContinuousGenerator generator, Tapahtumalista tapahtumalista, TapahtumanTyyppi tyyppi, int x, int y){
 		this.tapahtumalista = tapahtumalista;
 		this.generator = generator;
 		this.skeduloitavanTapahtumanTyyppi = tyyppi;
+		this.x = x;
+		this.y = y;
 				
 	}
+
+
 
 
 	public void lisaaJonoon(Asiakas a){   // Jonon 1. asiakas aina palvelussa
@@ -57,6 +63,22 @@ public class Palvelupiste {
 
 	public boolean onJonossa(){
 		return jono.size() != 0;
+	}
+
+	public int GetJonoSize() {
+		return jono.size();
+	}
+
+	public LinkedList<Asiakas> getJononAsiakkaat() {
+		return jono;
+	}
+
+	public int getX() {
+		return x;
+	}
+
+	public int getY() {
+		return y;
 	}
 
 }
