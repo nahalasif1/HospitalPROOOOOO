@@ -7,6 +7,7 @@ public enum TapahtumanTyyppi {
 	DEP1,
 	DEP2,
 	DEP3,
+	VUORONUMERO1,
 	VASTAANOTTO1,
 	VASTAANOTTO2,
 	MAKSU1,

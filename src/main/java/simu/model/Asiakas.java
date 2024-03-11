@@ -2,6 +2,9 @@ package simu.model;
 
 import simu.framework.Kello;
 import simu.framework.Trace;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 
 
 // TODO:
@@ -12,6 +15,9 @@ public class Asiakas {
 	private int id;
 	private static int i = 1;
 	private static long sum = 0;
+
+	public boolean NeedsMri = true;
+
 	
 	public Asiakas(){
 	    id = i++;
