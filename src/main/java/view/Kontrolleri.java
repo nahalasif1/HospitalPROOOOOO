@@ -3,11 +3,12 @@ package view;
 
 import controller.IKontrolleriForM;
 import controller.IKontrolleriForV;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
 import simu.framework.IMoottori;
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -18,8 +19,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import java.util.ResourceBundle;
-
 public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     @FXML
     private Label ControlText;
@@ -28,25 +27,31 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     private Text LaakariText;
 
     @FXML
-    private Button LaakariminusText;
+    private Button LaakariminusButton;
 
     @FXML
-    private Button LaakariplusText;
+    private Button LaakariplusButton;
 
     @FXML
-    private Button MaksuminusText;
+    private Button MaksuminusButton;
 
     @FXML
-    private Button MaksuplusText;
+    private Button MaksuplusButton;
+
+    @FXML
+    private Button vastaanottominusButton;
+
+    @FXML
+    private Button vastaanottoplusButton;
 
     @FXML
     private Text MriText;
 
     @FXML
-    private Button MriminusText;
+    private Button MRIminusButton;
 
     @FXML
-    private Button MriplusText;
+    private Button MRIplusButton;
 
     @FXML
     private Text ServiceText;
@@ -136,10 +141,22 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     private ImageView idewall3Text;
 
     @FXML
-    private Text maksuText;
+    private ImageView KassaImage1;
 
     @FXML
-    private ImageView mriaproText;
+    private ImageView KassaImage2;
+
+    @FXML
+    private ImageView Laakari1Image;
+
+    @FXML
+    private ImageView Laakari2Image;
+
+    @FXML
+    private ImageView kuvaus1Image;
+
+    @FXML
+    private ImageView kuvaus2Image;
 
     @FXML
     private Button nopeutaText;
@@ -148,10 +165,10 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     private Pane paneText;
 
     @FXML
-    private ImageView reception1Text;
+    private ImageView reception1Image;
 
     @FXML
-    private ImageView reception2Text;
+    private ImageView reception2Image;
 
     @FXML
     private ImageView sidewall1Text;
@@ -172,10 +189,10 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     private Text vastanottoText;
 
     @FXML
-    private Button vastanottominusText;
+    private Button vastanottominusButton;
 
     @FXML
-    private Button vastanottoplusText;
+    private Button vastanottoplusButton;
 
     @FXML
     private ImageView vhair4Text;
@@ -187,7 +204,7 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     private Text vuoronumerText;
 
     @FXML
-    private ImageView vuoronumeroText;
+    private ImageView VuoronumeroImage;
 
     @FXML
     private Button vuoronumeroplusText;
@@ -228,7 +245,11 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     private ISimulaattorinUI ui;
 
     private IKontrolleriForV kontrolleri;
-
+    
+    int kassa = 2;
+    int vastaanotto = 2;
+    int laakari = 2;
+    int mri = 2;
     @Override
     public void kaynnistaSimulointi() {
 
@@ -254,6 +275,201 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
 
     }
 
+    @FXML
+    private void results(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI2.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Results");
+            stage.setScene(new javafx.scene.Scene(root1));
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-}
+    @FXML
+    private void resultss(ActionEvent event){
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Results");
+            stage.setScene(new javafx.scene.Scene(root1));
+            stage.show();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void buttonMinusMaksu() {
+        MaksuminusButton.setOnAction(e -> {
+            switch (kassa) {
+                case 1:
+                    KassaImage1.setVisible(false);
+                    System.out.println("Kassa minus button pressed " + kassa);
+                    break;
+                case 2:
+                    KassaImage2.setVisible(false);
+                    System.out.println("Kassa minus button pressed " + kassa);
+                    break;
+                default:
+                    // Handle other cases if needed
+                    break;
+            }
+            if (kassa > 0) {
+                kassa--;
+            }
+        });
+    }
+
+    public synchronized void buttonPlusMaksu() {
+        MaksuplusButton.setOnAction(e -> {
+            switch (kassa) {
+                case 1:
+                    KassaImage1.setVisible(true);
+                    System.out.println("Kassa plus button pressed " + kassa);
+                    break;
+                case 2:
+                    KassaImage2.setVisible(true);
+                    System.out.println("Kassa plus button pressed " + kassa);
+                    break;
+                default:
+                    // Handle other cases if needed
+                    break;
+            }
+            if (kassa < 3) {
+                kassa++;
+            }
+        });
+    }
+
+    public synchronized void buttonMinusMri() {
+        MRIminusButton.setOnAction(e -> {
+            switch (mri) {
+                case 1:
+                    kuvaus1Image.setVisible(false);
+                    System.out.println("Kassa minus button pressed " + mri);
+                    break;
+                case 2:
+                    kuvaus2Image.setVisible(false);
+                    System.out.println("Kassa minus button pressed " + mri);
+                    break;
+                default:
+                    // Handle other cases if needed
+                    break;
+            }
+            if (mri > 0) {
+                mri--;
+            }
+        });
+    }
+
+    public synchronized void buttonPlusMri() {
+        MRIplusButton.setOnAction(e -> {
+            switch (mri) {
+                case 1:
+                    kuvaus1Image.setVisible(true);
+                    System.out.println("Kassa plus button pressed " + mri);
+                    break;
+                case 2:
+                    kuvaus2Image.setVisible(true);
+                    System.out.println("Kassa plus button pressed " + mri);
+                    break;
+                default:
+                    // Handle other cases if needed
+                    break;
+            }
+            if (mri < 3) {
+                mri++;
+            }
+        });
+    }
+
+    public synchronized void buttonMinusLaakari() {
+        LaakariminusButton.setOnAction(e -> {
+            switch (laakari) {
+                case 1:
+                    Laakari1Image.setVisible(false);
+                    System.out.println("Reception minus button pressed " + laakari);
+                    break;
+                case 2:
+                    Laakari2Image.setVisible(false);
+                    System.out.println("Reception minus button pressed " + laakari);
+                    break;
+                default:
+                    // Handle other cases if needed
+                    break;
+            }
+            if (laakari > 0) {
+                laakari--;
+            }
+        });
+    }
+
+    public synchronized void buttonPlusLaakari() {
+        LaakariplusButton.setOnAction(e -> {
+            switch (laakari) {
+                case 1:
+                    Laakari1Image.setVisible(true);
+                    System.out.println("Reception plus button pressed " + laakari);
+                    break;
+                case 2:
+                    Laakari2Image.setVisible(true);
+                    System.out.println("Reception plus button pressed " + laakari);
+                    break;
+                default:
+                    // Handle other cases if needed
+                    break;
+            }
+            if (laakari < 3) {
+                laakari++;
+            }
+        });
+    }
+
+    public synchronized void buttonMinusVataanotto() {
+        vastaanottominusButton.setOnAction(e -> {
+            switch (vastaanotto) {
+                case 1:
+                    reception1Image.setVisible(false);
+                    System.out.println("Reception minus button pressed " + vastaanotto);
+                    break;
+                case 2:
+                    reception2Image.setVisible(false);
+                    System.out.println("Reception minus button pressed " + vastaanotto);
+                    break;
+                default:
+                    // Handle other cases if needed
+                    break;
+            }
+            if (vastaanotto > 0) {
+                vastaanotto--;
+            }
+        });
+    }
+
+    public synchronized void buttonPlusVastaanotto() {
+        vastaanottoplusButton.setOnAction(e -> {
+            switch (vastaanotto) {
+                case 1:
+                    reception1Image.setVisible(true);
+                    System.out.println("Reception plus button pressed " + vastaanotto);
+                    break;
+                case 2:
+                    reception2Image.setVisible(true);
+                    System.out.println("Reception plus button pressed " + vastaanotto);
+                    break;
+                default:
+                    // Handle other cases if needed
+                    break;
+            }
+            if (vastaanotto < 3) {
+                vastaanotto++;
+            }
+        });
+    }
+
+    }
 
