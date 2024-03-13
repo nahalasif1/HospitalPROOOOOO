@@ -24,6 +24,7 @@ public class Asiakas {
 	    
 		saapumisaika = Kello.getInstance().getAika();
 		Trace.out(Trace.Level.INFO, "Uusi asiakas:" + id + ":"+saapumisaika);
+		NeedsMri = true;
 	}
 
 	public int getId() {
@@ -52,6 +53,24 @@ public class Asiakas {
 		sum += (poistumisaika-saapumisaika);
 		double keskiarvo = sum/id;
 		System.out.println("Asiakkaiden läpimenoaikojen keskiarvo "+ keskiarvo);
+
+	}
+
+	public void draw(GraphicsContext gc, int x, int y) {
+		if (NeedsMri) {
+			gc.setFill(Color.GREEN);
+		} else {
+			gc.setFill(Color.RED);
+		}
+		gc.fillOval(x, y, 10, 10);
+
+
+	}
+
+	public void removeDraw(GraphicsContext gc, int x, int y) {
+		gc.setFill(Color.TRANSPARENT);
+		gc.fillOval(x, y, 1, 1);
+		gc.setFill(Color.TRANSPARENT);
 	}
 
 }
