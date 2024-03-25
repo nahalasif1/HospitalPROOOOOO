@@ -1,9 +1,16 @@
 package simu.model;
 
+import javafx.scene.input.DataFormat;
 import simu.framework.*;
 import eduni.distributions.Negexp;
 import eduni.distributions.Normal;
 import controller.IKontrolleriForM;
+
+
+import java.text.SimpleDateFormat;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Calendar;
 
 public class OmaMoottori extends Moottori{
 	
@@ -11,12 +18,16 @@ public class OmaMoottori extends Moottori{
 
 	private Palvelupiste[] palvelupisteet;
 
+	//private simulaatio simulaatio;
+
+	private int [] servicePointConfigurations = {0,0,0,0};
+
 
 	public OmaMoottori(IKontrolleriForM kontrolleri){
 
 		super(kontrolleri);
 
-		palvelupisteet = new Palvelupiste[3];
+		palvelupisteet = new Palvelupiste[9];
 
 		palvelupisteet[0]=new Vuoronumero(new Normal(10,6), tapahtumalista, TapahtumanTyyppi.VUORONUMERO1, 313,260);
 
@@ -39,31 +50,221 @@ public class OmaMoottori extends Moottori{
 	}
 
 
+	public void setServicePointConfigurations(int[] servicePointConfigurations) {
+		this.servicePointConfigurations = servicePointConfigurations;
+	}
+
+	public int[] getServicePointConfigurations() {
+		return servicePointConfigurations;
+	}
+
 	@Override
 	protected void alustukset() {
 		saapumisprosessi.generoiSeuraava(); // Ensimmäinen saapuminen järjestelmään
+		Date date = Calendar.getInstance().getTime();
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		String strDate = df.format(date);
+		//simulaatio = new simulaatio(servicePointConfigurations, strDate);
+		//Simudao persist ( This operation saves the simulation data, including the settings and the timestamp, into the database.)
+		//Simulaatio
+		//AsiakasDAO
 	}
 
+	@Override
+	public int getSimulointiaika (){
+		return 0;
+	}
 	@Override
 	protected void suoritaTapahtuma(Tapahtuma t){  // B-vaiheen tapahtumat
 
 		Asiakas a;
+		boolean continueLoop;
+		int j;
 		switch ((TapahtumanTyyppi)t.getTyyppi()){
 
-			case ARR1: palvelupisteet[0].lisaaJonoon(new Asiakas());
-				       saapumisprosessi.generoiSeuraava();
-					   kontrolleri.visualisoiAsiakas(); // UUSI
+			case ARR1:
+				continueLoop = true;
+				j=0;
+				while (continueLoop) {
+					for (int i = 0; i < servicePointConfigurations[0]; i++) {
+						if (palvelupisteet[i].GetJonoSize() == j) {
+							palvelupisteet[i].lisaaJonoon(new Asiakas());
+							saapumisprosessi.generoiSeuraava();
+							//kontrolleri.visualisoiAsiakas(); // UUSI
+							System.out.println("Asiakas saapui palvelupisteeseen " + i);
+							continueLoop = false;
+							break;
+						}
+					}
+					j ++;
+				}
+				saapumisprosessi.generoiSeuraava();
 				break;
-			case DEP1: a = (Asiakas)palvelupisteet[0].otaJonosta();
-				   	   palvelupisteet[1].lisaaJonoon(a);
+
+			/*case VUORONUMERO1:
+				a = (Asiakas)palvelupisteet[0].otaJonosta();
+				palvelupisteet[1].lisaaJonoon(a);
+				palvelupisteet[2].lisaaJonoon(a);
+				break;*/
+
+			case VASTAANOTTO1:
+				a = (Asiakas)palvelupisteet[1].otaJonosta();
+				continueLoop = true;
+				j = 0;
+				while (continueLoop)
+				{
+					for (int i = 2; i < servicePointConfigurations[1]; i++)
+					{
+						if (palvelupisteet[i].GetJonoSize() == j)
+						{
+							palvelupisteet[1].lisaaJonoon(a);
+							continueLoop = false;
+							break;
+						}
+					}
+					j++;
+				}
+
+			case VASTAANOTTO2:
+				a = (Asiakas)palvelupisteet[2].otaJonosta();
+				continueLoop = true;
+				j = 0;
+				while (continueLoop)
+				{
+					for (int i = 2; i < servicePointConfigurations[1]; i++)
+					{
+						if (palvelupisteet[i].GetJonoSize() == j)
+						{
+							palvelupisteet[2].lisaaJonoon(a);
+							continueLoop = false;
+							break;
+						}
+					}
+					j++;
+				}
+
+
+			case LAAKARI1:
+				a = (Asiakas)palvelupisteet[3].otaJonosta();;
+				continueLoop = true;
+				j = 0;
+				while (continueLoop)
+				{
+					for (int i = 2; i < servicePointConfigurations[1]; i++)
+					{
+						if (palvelupisteet[i].GetJonoSize() == j)
+						{
+							palvelupisteet[i].lisaaJonoon(a);
+							continueLoop = false;
+							break;
+						}
+					}
+					j++;
+				}
 				break;
-			case DEP2: a = (Asiakas)palvelupisteet[1].otaJonosta();
-				   	   palvelupisteet[2].lisaaJonoon(a);
+			case LAAKARI2:
+				a = (Asiakas)palvelupisteet[4].otaJonosta();
+				continueLoop = true;
+				j = 0;
+				while (continueLoop)
+				{
+					for (int i = 2; i < servicePointConfigurations[1]; i++)
+					{
+						if (palvelupisteet[i].GetJonoSize() == j)
+						{
+							palvelupisteet[i].lisaaJonoon(a);
+							continueLoop = false;
+							break;
+						}
+					}
+					j++;
+				}
 				break;
-			case DEP3:
-				       a = (Asiakas)palvelupisteet[2].otaJonosta();
+
+			case RONTGEN1:
+				a = (Asiakas)palvelupisteet[5].otaJonosta();
+				if (a.isneedsMri()) {
+					continueLoop = true;
+					j = 0;
+					while (continueLoop) {
+						for (int i = 2; i < servicePointConfigurations[1]; i++) {
+							if (palvelupisteet[i].GetJonoSize() == j) {
+								palvelupisteet[i].lisaaJonoon(a);
+								continueLoop = false;
+								break;
+							}
+						}
+						j++;
+					}
+				}	 else { palvelupisteet[7].lisaaJonoon(a);}
+
+				break;
+			case RONTGEN2:
+				a = (Asiakas)palvelupisteet[6].otaJonosta();
+				if (a.isneedsMri()) {
+					continueLoop = true;
+					j = 0;
+					while (continueLoop) {
+						for (int i = 2; i < servicePointConfigurations[1]; i++) {
+							if (palvelupisteet[i].GetJonoSize() == j) {
+								palvelupisteet[i].lisaaJonoon(a);
+								continueLoop = false;
+								break;
+							}
+						}
+						j++;
+					}
+				}	 else { palvelupisteet[8].lisaaJonoon(a);
+
+				}
+				break;
+			/*case MAKSU1:
+				a = (Asiakas)palvelupisteet[7].otaJonosta();
+				continueLoop = true;
+				j = 0;
+				while (coninueLoop)
+				{
+					for (int i = 2; i < servicePointConfigurations[1]; i++)
+					{
+						if (palvelupisteet[i].GetJonoSize() == j)
+						{
+							palvelupisteet[i].lisaaJonoon(a);
+							continueLoop = false;
+							break;
+						}
+					}
+					j++;
+				}
+				break;*/
+			/*case MAKSU2:
+				a = (Asiakas)palvelupisteet[8].otaJonosta();
+				continueLoop = true;
+				j = 0;
+				while (continueLoop)
+				{
+					for (int i = 2; i < servicePointConfigurations[1]; i++)
+					{
+						if (palvelupisteet[i].GetJonoSize() == j)
+						{
+							palvelupisteet[i].lisaaJonoon(a);
+							continueLoop = false;
+							break;
+						}
+					}
+					j++;
+				}
+				break;*/
+
+
+
+			case MAKSU1: a = (Asiakas)palvelupisteet[7].otaJonosta();
+				   	   	a.tulos();
+						a.setPoistumisaika(Kello.getInstance().getAika());
+
+			case MAKSU2:
+				       a = (Asiakas)palvelupisteet[8].otaJonosta();
 					   a.setPoistumisaika(Kello.getInstance().getAika());
-			           a.raportti();
+			           a.tulos();
 		}
 	}
 
@@ -85,5 +286,7 @@ public class OmaMoottori extends Moottori{
 		kontrolleri.naytaLoppuaika(Kello.getInstance().getAika());
 	}
 
-	
+	public Palvelupiste[] getPalvelupisteet() {
+		return palvelupisteet;
+	}
 }

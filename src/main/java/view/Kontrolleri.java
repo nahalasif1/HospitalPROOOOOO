@@ -3,6 +3,7 @@ package view;
 
 import controller.IKontrolleriForM;
 import controller.IKontrolleriForV;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import simu.framework.Kello;
+import simu.framework.Trace;
+import simu.model.OmaMoottori;
+import simu.model.Palvelupiste;
+import javafx.event.EventHandler;
+import javafx.scene.canvas.Canvas;
+
 
 public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     @FXML
@@ -238,6 +246,9 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
 
     @FXML
     private Color x21;
+
+    @FXML
+    Canvas canvass;
     private Visualisointi visualisointi;
 
     private IMoottori moottori;
@@ -245,23 +256,30 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
     private ISimulaattorinUI ui;
 
     private IKontrolleriForV kontrolleri;
-    
+
     int kassa = 2;
     int vastaanotto = 2;
     int laakari = 2;
     int mri = 2;
+
+    int vuoronumero = 1;
+
     @Override
     public void kaynnistaSimulointi() {
+
 
     }
 
     @Override
     public void nopeuta() {
+        moottori.setViive((long) (moottori.getViive() * 0.9));
+
 
     }
 
     @Override
     public void hidasta() {
+        moottori.setViive((long) (moottori.getViive() * 1.10));
 
     }
 
@@ -272,11 +290,44 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
 
     @Override
     public void visualisoiAsiakas() {
+        System.out.println("Visualisoi asiakas");
+        Platform.runLater(new Runnable() {
+            public void run() {
+                ui.getVisualisointi().uusiAsiakas();
+            }
+        });
+
 
     }
 
     @FXML
-    private void results(ActionEvent event){
+    public void buttonHidasta() {
+
+        hidastaText.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Hidasta button pressed");
+                hidasta();
+            }
+
+        });
+
+    }
+
+    @FXML
+    public void buttonNopeuta() {
+
+        nopeutaText.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Nopeuta button pressed");
+                nopeuta();
+            }
+        });
+    }
+
+    @FXML
+    private void results(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI2.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -284,13 +335,13 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
             stage.setTitle("Results");
             stage.setScene(new javafx.scene.Scene(root1));
             stage.show();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     @FXML
-    private void resultss(ActionEvent event){
+    private void resultss(ActionEvent event) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/GUI.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -298,7 +349,7 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
             stage.setTitle("Results");
             stage.setScene(new javafx.scene.Scene(root1));
             stage.show();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -343,6 +394,10 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
                 kassa++;
             }
         });
+    }
+
+    public Palvelupiste[] getPalvelupisteet() {
+        return ((OmaMoottori) moottori).getPalvelupisteet();
     }
 
     public synchronized void buttonMinusMri() {
@@ -470,6 +525,40 @@ public class Kontrolleri implements IKontrolleriForM, IKontrolleriForV {
             }
         });
     }
+    @FXML
+    private void aloita(ActionEvent event) {
+        // Resetoidaan kellon aika ja staattiset muuttujat
+        Kello.getInstance().setAika(0);
+        // Luodaan uusi moottori ja asetetaan sille asetukset
+        //moottori = new OmaMoottori(this);
+        visualisointi = new Visualisointi(this, canvass);
+        moottori = new OmaMoottori(this);
+        moottori.setSimulointiaika(Integer.parseInt(aikaboxText.getText()));
+        moottori.setViive(Integer.parseInt(syotoboxText.getText()));
+        moottori.setServicePointConfigurations(new int[]{kassa, vastaanotto, laakari, mri});
+        System.out.println(moottori.getServicePointConfigurations()[0]);
+        System.out.println(moottori.getServicePointConfigurations()[1]);
+        System.out.println(moottori.getServicePointConfigurations()[2]);
+        System.out.println(moottori.getServicePointConfigurations()[3]);
+
+        ((Thread) moottori).start();
+        Trace.setTraceLevel(Trace.Level.INFO);
+        // Luodaan uusi asikakkaita GUI:iin
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public synchronized void run() {
+                while (true) {
+                    System.out.println("Visualisoi asiakas --- IAM HERE");
+                    visualisointi.uusiAsiakas();
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        thread.start();
 
     }
-
+}

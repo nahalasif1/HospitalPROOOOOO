@@ -9,4 +9,10 @@ public class Vastaanotto extends Palvelupiste {
         counters++;
     }
 
+    @Override
+    public void aloitaPalvelu() {
+        System.out.println("Check-IN: ");
+        super.aloitaPalvelu();
+    }
+
 }

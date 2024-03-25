@@ -8,5 +8,10 @@ public class Laakari extends Palvelupiste {
         super(generator, tapahtumalista, tyyppi, x,  y);
         counters++;
     }
+    @Override
+    public void aloitaPalvelu() {
+        System.out.println("Check-IN: ");
+        super.aloitaPalvelu();
+    }
 
 }

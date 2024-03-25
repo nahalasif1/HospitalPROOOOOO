@@ -92,7 +92,7 @@
               <children>
                         <Text layoutX="21.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                         <Text layoutX="21.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-                        <Label fx:id="ControlText" alignment="CENTER" layoutX="62.0" layoutY="18.0" style="&#10;" text="CONTROL" textAlignment="CENTER" wrapText="false">
+                        <Label fx:id="ControlText" alignment="CENTER" layoutX="62.0" layoutY="18.0" style="&#10;" text="Kontrolleri" textAlignment="CENTER" wrapText="false">
                            <font>
                               <Font size="18.0" fx:id="x11" />
                            </font>
@@ -105,16 +105,16 @@
                         <Text fx:id="syötäText" layoutX="22.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Syötä viive:" />
                         <ButtonBar layoutX="17.0" layoutY="123.0" prefHeight="35.0" prefWidth="70.0">
                           <buttons>
-                            <Button fx:id="nopeutaText" mnemonicParsing="false" text="Nopeuta" />
+                            <Button fx:id="nopeutaText" mnemonicParsing="false" onAction="#buttonNopeuta" text="Nopeuta" />
                           </buttons>
                         </ButtonBar>
                         <ButtonBar layoutX="114.0" layoutY="118.0" prefHeight="40.0" prefWidth="76.0">
                           <buttons>
-                            <Button fx:id="hidastaText" contentDisplay="CENTER" minWidth="61.0" mnemonicParsing="false" prefHeight="12.0" text="Hidasta" textAlignment="RIGHT" />
+                            <Button fx:id="hidastaText" contentDisplay="CENTER" minWidth="61.0" mnemonicParsing="false" onAction="#buttonHidasta" prefHeight="12.0" text="Hidasta" textAlignment="RIGHT" />
                           </buttons>
                         </ButtonBar>
                         <Separator layoutX="14.0" layoutY="192.0" prefWidth="200.0" />
-                        <Text fx:id="ServiceText" fill="#a19191" layoutX="58.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Service Points">
+                        <Text fx:id="ServiceText" fill="#a19191" layoutX="56.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Palvelupisteet" wrappingWidth="106.716796875">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -166,6 +166,7 @@
                         </Button>
                         <TextField fx:id="aikaboxText" layoutX="103.0" layoutY="49.0" prefHeight="25.0" prefWidth="100.0" />
                         <TextField fx:id="syötöboxText" layoutX="103.0" layoutY="84.0" prefHeight="25.0" prefWidth="100.0" />
+                        <Button fx:id="AloitaButton" layoutX="82.0" layoutY="158.0" mnemonicParsing="false" onAction="#aloita" text="Aloita" />
               </children>
             </AnchorPane>
           </content>
